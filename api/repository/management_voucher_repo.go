@@ -10,6 +10,7 @@ type VoucherRepository interface {
 	FindByKodeVoucher(kode string) (*model.Voucher, error)
 	DeleteVoucherByID(voucherID uint) error
 	FindByID(voucherID uint) (*model.Voucher, error)
+	UpdateVoucher(voucherID uint, updatedVoucher *model.Voucher) error
 }
 
 type voucherRepository struct {
@@ -50,4 +51,15 @@ func (r *voucherRepository) FindByID(voucherID uint) (*model.Voucher, error) {
 		return nil, err
 	}
 	return &voucher, nil
+}
+
+func (r *voucherRepository) UpdateVoucher(voucherID uint, updatedVoucher *model.Voucher) error {
+	result := r.db.Model(&model.Voucher{}).Where("id = ?", voucherID).Updates(updatedVoucher)
+	if result.Error != nil {
+		return result.Error
+	}
+	if result.RowsAffected == 0 {
+		return gorm.ErrRecordNotFound
+	}
+	return nil
 }

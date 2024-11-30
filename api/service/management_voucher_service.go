@@ -10,6 +10,7 @@ import (
 type VoucherService interface {
 	CreateVoucher(input model.Voucher) (*model.Voucher, error)
 	DeleteVoucherByID(voucherID uint) error
+	UpdateVoucher(voucherID uint, updatedData *model.Voucher) error
 }
 
 type voucherService struct {
@@ -52,4 +53,16 @@ func (s *voucherService) DeleteVoucherByID(voucherID uint) error {
 
 	// Lakukan penghapusan
 	return s.repo.DeleteVoucherByID(voucherID)
+}
+
+func (s *voucherService) UpdateVoucher(voucherID uint, updatedData *model.Voucher) error {
+	voucher, err := s.repo.FindByID(voucherID)
+	if err != nil {
+		return err
+	}
+	if voucher == nil {
+		return errors.New("voucher tidak ditemukan")
+	}
+
+	return s.repo.UpdateVoucher(voucherID, updatedData)
 }

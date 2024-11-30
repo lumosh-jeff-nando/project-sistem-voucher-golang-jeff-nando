@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/project-sistem-voucher/api/model"
 	"github.com/project-sistem-voucher/api/service"
+	"gorm.io/gorm"
 )
 
 type VoucherHandler struct {
@@ -49,4 +50,31 @@ func (h *VoucherHandler) DeleteVoucher(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"message": "Voucher berhasil dihapus"})
+}
+
+func (h *VoucherHandler) UpdateVoucher(c *gin.Context) {
+	idParam := c.Param("id")
+	voucherID, err := strconv.Atoi(idParam)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "voucher_id tidak valid"})
+		return
+	}
+
+	var updatedVoucher model.Voucher
+	if err := c.ShouldBindJSON(&updatedVoucher); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	err = h.Service.UpdateVoucher(uint(voucherID), &updatedVoucher)
+	if err != nil {
+		if err == gorm.ErrRecordNotFound {
+			c.JSON(http.StatusNotFound, gin.H{"error": "voucher tidak ditemukan"})
+			return
+		}
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Voucher berhasil diupdate"})
 }

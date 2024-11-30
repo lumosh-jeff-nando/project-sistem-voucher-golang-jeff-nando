@@ -25,6 +25,7 @@ func SetupRouter(router *gin.Engine) error {
 		{
 			sistemVoucher.POST("/create", voucherHandler.CreateVoucher)
 			sistemVoucher.DELETE("/delete/:id", voucherHandler.DeleteVoucher)
+			sistemVoucher.PUT("update/:id", voucherHandler.UpdateVoucher)
 		}
 	}
 
