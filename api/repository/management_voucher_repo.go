@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"time"
+
 	"github.com/project-sistem-voucher/api/model"
 	"gorm.io/gorm"
 )
@@ -11,6 +13,7 @@ type VoucherRepository interface {
 	DeleteVoucherByID(voucherID uint) error
 	FindByID(voucherID uint) (*model.Voucher, error)
 	UpdateVoucher(voucherID uint, updatedVoucher *model.Voucher) error
+	GetVouchers(params map[string]string) ([]model.Voucher, error)
 }
 
 type voucherRepository struct {
@@ -62,4 +65,37 @@ func (r *voucherRepository) UpdateVoucher(voucherID uint, updatedVoucher *model.
 		return gorm.ErrRecordNotFound
 	}
 	return nil
+}
+
+func (r *voucherRepository) GetVouchers(params map[string]string) ([]model.Voucher, error) {
+	var vouchers []model.Voucher
+	query := r.db
+
+	if tipeVoucher, ok := params["tipe_voucher"]; ok && tipeVoucher != "" {
+		query = query.Where("tipe_voucher = ?", tipeVoucher)
+	}
+
+	if status, ok := params["status"]; ok && status != "" {
+		now := time.Now()
+		if status == "aktif" {
+			query = query.Where("mulai_berlaku <= ? AND berakhir_berlaku >= ?", now, now)
+		} else if status == "non-aktif" {
+			query = query.Where("berakhir_berlaku < ? OR mulai_berlaku > ?", now, now)
+		}
+	}
+
+	if area, ok := params["area"]; ok && area != "" {
+		query = query.Where("area_berlaku LIKE ?", "%"+area+"%")
+	}
+
+	if metodePembayaran, ok := params["metode_pembayaran"]; ok && metodePembayaran != "" {
+		query = query.Where("metode_pembayaran = ?", metodePembayaran)
+	}
+
+	err := query.Find(&vouchers).Error
+	if err != nil {
+		return nil, err
+	}
+
+	return vouchers, nil
 }

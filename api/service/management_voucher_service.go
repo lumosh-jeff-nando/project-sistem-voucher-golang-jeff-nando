@@ -11,6 +11,7 @@ type VoucherService interface {
 	CreateVoucher(input model.Voucher) (*model.Voucher, error)
 	DeleteVoucherByID(voucherID uint) error
 	UpdateVoucher(voucherID uint, updatedData *model.Voucher) error
+	GetVouchers(params map[string]string) ([]model.Voucher, error)
 }
 
 type voucherService struct {
@@ -65,4 +66,8 @@ func (s *voucherService) UpdateVoucher(voucherID uint, updatedData *model.Vouche
 	}
 
 	return s.repo.UpdateVoucher(voucherID, updatedData)
+}
+
+func (s *voucherService) GetVouchers(params map[string]string) ([]model.Voucher, error) {
+	return s.repo.GetVouchers(params)
 }

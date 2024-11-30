@@ -78,3 +78,20 @@ func (h *VoucherHandler) UpdateVoucher(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Voucher berhasil diupdate"})
 }
+
+func (h *VoucherHandler) GetVouchers(c *gin.Context) {
+	params := map[string]string{
+		"tipe_voucher":      c.Query("tipe_voucher"),
+		"status":            c.Query("status"),
+		"area":              c.Query("area"),
+		"metode_pembayaran": c.Query("metode_pembayaran"),
+	}
+
+	vouchers, err := h.Service.GetVouchers(params)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"data": vouchers})
+}
