@@ -24,6 +24,7 @@ func SetupRouter(router *gin.Engine) error {
 		sistemVoucher := v1.Group("/management-voucher")
 		{
 			sistemVoucher.POST("/create", voucherHandler.CreateVoucher)
+			sistemVoucher.DELETE("/delete/:id", voucherHandler.DeleteVoucher)
 		}
 	}
 

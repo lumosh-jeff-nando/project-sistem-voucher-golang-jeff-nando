@@ -2,6 +2,7 @@ package handler
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/project-sistem-voucher/api/model"
@@ -31,4 +32,21 @@ func (h *VoucherHandler) CreateVoucher(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusCreated, gin.H{"message": "Voucher created successfully", "data": voucher})
+}
+
+func (h *VoucherHandler) DeleteVoucher(c *gin.Context) {
+	idParam := c.Param("id")
+	voucherID, err := strconv.Atoi(idParam)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "voucher_id tidak valid"})
+		return
+	}
+
+	err = h.Service.DeleteVoucherByID(uint(voucherID))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Voucher berhasil dihapus"})
 }
