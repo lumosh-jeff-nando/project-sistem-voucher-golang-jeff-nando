@@ -5,7 +5,7 @@ import "time"
 type Voucher struct {
 	ID               uint      `gorm:"primaryKey" json:"id"`
 	NamaVoucher      string    `json:"nama_voucher" binding:"required"`
-	KodeVoucher      string    `json:"kode_voucher" binding:"required,alphanum"`
+	KodeVoucher      string    `json:"kode_voucher" binding:"required,alphanum" gorm:"unique"`
 	TipeVoucher      string    `json:"tipe_voucher" binding:"required,oneof=e-commerce redeem-poin"`
 	Deskripsi        string    `json:"deskripsi" binding:"required"`
 	JenisVoucher     string    `json:"jenis_voucher" binding:"required,oneof=gratis-ongkir diskon"`
@@ -20,4 +20,6 @@ type Voucher struct {
 	Point            int       `json:"point,omitempty"`
 	Kuota            int       `json:"kuota,omitempty"`
 	NilaiTukarPoin   int       `json:"nilai_tukar_poin,omitempty"`
+	Redeem           Redeem    `json:"reedem,omitempty" gorm:"foreignKey:KodeVoucher;references:KodeVoucher"`
+	Use              Use       `json:"use,omitempty" gorm:"foreignKey:VoucherCode;references:KodeVoucher"`
 }

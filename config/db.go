@@ -34,7 +34,7 @@ func InitDB() {
 
 func SyncDB() {
 	//nanti disini yta migrate tablenya
-	if err := DB.AutoMigrate(&model.Voucher{}, &model.Redeem{}); err != nil {
+	if err := DB.AutoMigrate(&model.Voucher{}, &model.Redeem{}, model.Use{}); err != nil {
 		fmt.Printf("AutoMigrate error: %s\n", err)
 		panic(err)
 	} else {

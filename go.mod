@@ -2,7 +2,10 @@ module github.com/project-sistem-voucher
 
 go 1.20
 
-require github.com/spf13/viper v1.19.0
+require (
+	github.com/spf13/viper v1.19.0
+	gorm.io/gorm v1.25.10
+)
 
 require (
 	github.com/bytedance/sonic v1.11.6 // indirect
@@ -34,7 +37,6 @@ require (
 	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/sync v0.6.0 // indirect
 	google.golang.org/protobuf v1.34.1 // indirect
-	gorm.io/gorm v1.25.10 // indirect
 )
 
 require (

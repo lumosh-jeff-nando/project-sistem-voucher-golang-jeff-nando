@@ -19,6 +19,8 @@ func SetupRouter(router *gin.Engine) error {
 
 	voucherHandler := handler.NewVoucherHandler(repoManager.VoucherService())
 	redeemHandler := handler.NewRedeemHandler(repoManager.RedeemService())
+	handlerApplicationVoucher := handler.NewHandlerApplicationVoucher(repoManager.ServiceApplicationVoucher())
+	handlerHistoryVoucher := handler.NewHandlerHistoryVoucher(repoManager.ServiceHistoryVoucher())
 
 	v1 := router.Group("/api/v1")
 	{
@@ -30,6 +32,18 @@ func SetupRouter(router *gin.Engine) error {
 			sistemVoucher.GET("list", voucherHandler.GetVouchers)
 			sistemVoucher.GET("/redeem-list", voucherHandler.GetVouchersForRedeem)
 			sistemVoucher.POST("/redeem", redeemHandler.RedeemVoucher)
+		}
+		applyVoucher := v1.Group("/apply-voucher")
+		{
+			applyVoucher.POST("/use", handlerApplicationVoucher.CreateUseVoucher)
+			applyVoucher.POST("/validate", handlerApplicationVoucher.ValidateVoucher)
+			applyVoucher.GET("/:userID/:voucherType", handlerApplicationVoucher.GetMyVoucherByCategory)
+		}
+		historyVoucher := v1.Group("/history-voucher")
+		{
+			historyVoucher.GET("/reedem/:userID", handlerHistoryVoucher.GetReedemVoucherByUserId)
+			historyVoucher.GET("/use/:userID", handlerHistoryVoucher.GetUseVoucherByUserId)
+			historyVoucher.GET("/all/:kode_voucher", handlerHistoryVoucher.GetAllUseByVoucherCode)
 		}
 	}
 
