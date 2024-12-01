@@ -47,3 +47,25 @@ func SeedVouchers(db *gorm.DB) {
 		}
 	}
 }
+
+func SeedRedeem(db *gorm.DB) error {
+
+	redeems := []model.Redeem{
+		{
+			UserID:        1,
+			KodeVoucher:   "DISKON50",
+			TanggalRedeem: time.Now(),
+		},
+		{
+			UserID:        2,
+			KodeVoucher:   "VOUCHER123",
+			TanggalRedeem: time.Now(),
+		},
+	}
+
+	for _, redeem := range redeems {
+		db.Create(&redeem)
+	}
+
+	return nil
+}
