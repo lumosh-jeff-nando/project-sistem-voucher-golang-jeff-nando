@@ -36,6 +36,23 @@ func SeedVouchers(db *gorm.DB) {
 			MulaiBerlaku:     time.Now(),
 			BerakhirBerlaku:  time.Now().AddDate(0, 2, 0),
 		},
+		{
+			NamaVoucher:      "Voucher Diskon",
+			KodeVoucher:      "VOUCHER123",
+			TipeVoucher:      "diskon",
+			Deskripsi:        "Diskon 10%",
+			JenisVoucher:     "produk",
+			Ketentuan:        "Minimal belanja Rp100.000",
+			MinimanBelanja:   100000,
+			MetodePembayaran: "kartu kredit",
+			PersentaseDiskon: &persentasiDisc,
+			MulaiBerlaku:     time.Now(),
+			BerakhirBerlaku:  time.Now().AddDate(0, 0, 30),
+			AreaBerlaku:      "Indonesia",
+			Point:            50,
+			Kuota:            100,
+			NilaiTukarPoin:   20,
+		},
 	}
 
 	for _, voucher := range vouchers {
