@@ -19,4 +19,5 @@ type Voucher struct {
 	AreaBerlaku      string    `json:"area_berlaku" binding:"required"`
 	Point            int       `json:"point,omitempty"`
 	Kuota            int       `json:"kuota,omitempty"`
+	NilaiTukarPoin   int       `json:"nilai_tukar_poin,omitempty"`
 }

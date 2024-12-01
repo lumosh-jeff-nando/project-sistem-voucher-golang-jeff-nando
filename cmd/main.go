@@ -11,6 +11,7 @@ func init() {
 	config.InitDB()
 	config.SyncDB()
 	seeders.SeedVouchers(config.DB)
+	seeders.SeedRedeem(config.DB)
 }
 
 func main() {
