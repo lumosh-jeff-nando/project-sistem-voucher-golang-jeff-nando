@@ -62,3 +62,4 @@ time="2024-12-01T21:43:03+07:00" level=info msg="{2024-12-01 21:43:03.1110172 +0
 time="2024-12-01T21:43:32+07:00" level=info msg="{2024-12-01 21:43:32.150340425 +0700 WIB m=+32.626770764 294ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
 time="2024-12-01T21:44:09+07:00" level=info msg="{2024-12-01 21:44:09.133246958 +0700 WIB m=+69.609677302 293ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
 time="2024-12-01T21:45:37+07:00" level=info msg="{2024-12-01 21:45:37.845860968 +0700 WIB m=+158.322291303 364ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
+time="2024-12-01T23:24:31+07:00" level=info msg="{2024-12-01 23:24:31.513996094 +0700 WIB m=+18.017848485 250ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
