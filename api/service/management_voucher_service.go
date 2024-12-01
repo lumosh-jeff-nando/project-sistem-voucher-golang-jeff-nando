@@ -12,6 +12,7 @@ type VoucherService interface {
 	DeleteVoucherByID(voucherID uint) error
 	UpdateVoucher(voucherID uint, updatedData *model.Voucher) error
 	GetVouchers(params map[string]string) ([]model.Voucher, error)
+	GetVouchersForRedeem(userPoints int) ([]map[string]interface{}, error)
 }
 
 type voucherService struct {
@@ -70,4 +71,33 @@ func (s *voucherService) UpdateVoucher(voucherID uint, updatedData *model.Vouche
 
 func (s *voucherService) GetVouchers(params map[string]string) ([]model.Voucher, error) {
 	return s.repo.GetVouchers(params)
+}
+
+func (s *voucherService) GetVouchersForRedeem(userPoints int) ([]map[string]interface{}, error) {
+	var vouchers []model.Voucher
+	err := s.repo.GetVouchersForRedeem(userPoints, &vouchers)
+	if err != nil {
+		return nil, err
+	}
+
+	response := []map[string]interface{}{}
+	for _, v := range vouchers {
+		response = append(response, map[string]interface{}{
+			"nama_voucher":     v.NamaVoucher,
+			"nilai_diskon":     getDiskonValue(v),
+			"nilai_tukar_poin": v.NilaiTukarPoin,
+		})
+	}
+
+	return response, nil
+}
+
+func getDiskonValue(voucher model.Voucher) float64 {
+	if voucher.PersentaseDiskon != nil {
+		return *voucher.PersentaseDiskon
+	}
+	if voucher.NominalDiskon != nil {
+		return *voucher.NominalDiskon
+	}
+	return 0
 }

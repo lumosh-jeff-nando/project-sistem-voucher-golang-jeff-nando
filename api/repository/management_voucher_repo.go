@@ -14,6 +14,7 @@ type VoucherRepository interface {
 	FindByID(voucherID uint) (*model.Voucher, error)
 	UpdateVoucher(voucherID uint, updatedVoucher *model.Voucher) error
 	GetVouchers(params map[string]string) ([]model.Voucher, error)
+	GetVouchersForRedeem(userPoints int, vouchers *[]model.Voucher) error
 }
 
 type voucherRepository struct {
@@ -98,4 +99,8 @@ func (r *voucherRepository) GetVouchers(params map[string]string) ([]model.Vouch
 	}
 
 	return vouchers, nil
+}
+
+func (r *voucherRepository) GetVouchersForRedeem(userPoints int, vouchers *[]model.Voucher) error {
+	return r.db.Where("nilai_tukar_poin <= ?", userPoints).Find(vouchers).Error
 }

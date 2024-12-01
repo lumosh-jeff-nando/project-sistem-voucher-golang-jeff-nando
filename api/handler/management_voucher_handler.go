@@ -95,3 +95,31 @@ func (h *VoucherHandler) GetVouchers(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"data": vouchers})
 }
+
+func (h *VoucherHandler) GetVouchersForRedeem(c *gin.Context) {
+	userIDStr := c.DefaultQuery("user_id", "")
+	if userIDStr == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "user_id is required"})
+		return
+	}
+
+	userID, err := strconv.Atoi(userIDStr)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "invalid user_id"})
+		return
+	}
+
+	userPoints := getUserPoints(userID)
+
+	vouchers, err := h.Service.GetVouchersForRedeem(userPoints)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "could not fetch vouchers"})
+		return
+	}
+
+	c.JSON(http.StatusOK, vouchers)
+}
+
+func getUserPoints(userID int) int {
+	return 100
+}
