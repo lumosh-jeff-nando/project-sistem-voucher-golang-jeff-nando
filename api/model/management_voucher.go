@@ -20,6 +20,6 @@ type Voucher struct {
 	Point            int       `json:"point,omitempty"`
 	Kuota            int       `json:"kuota,omitempty"`
 	NilaiTukarPoin   int       `json:"nilai_tukar_poin,omitempty"`
-	Redeem           Redeem    `json:"reedem,omitempty" gorm:"foreignKey:KodeVoucher;references:KodeVoucher"`
-	Use              Use       `json:"use,omitempty" gorm:"foreignKey:VoucherCode;references:KodeVoucher"`
+	Redeem           *Redeem   `json:"reedem,omitempty" gorm:"foreignKey:KodeVoucher;references:KodeVoucher"`
+	Use              *Use      `json:"use,omitempty" gorm:"foreignKey:VoucherCode;references:KodeVoucher"`
 }

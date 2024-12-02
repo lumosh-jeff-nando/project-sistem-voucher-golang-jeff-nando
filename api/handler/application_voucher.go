@@ -28,7 +28,7 @@ func (h *HandlerApplicationVoucher) GetMyVoucherByCategory(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"message": "Get My Voucher By Category Sucess", "data": vouchers})
+	c.JSON(http.StatusOK, gin.H{"message": "Get My Voucher By Category Sucess", "data": vouchers})
 }
 func (h *HandlerApplicationVoucher) ValidateVoucher(c *gin.Context) {
 	var input model.InputApplyVoucher
@@ -42,7 +42,7 @@ func (h *HandlerApplicationVoucher) ValidateVoucher(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"message": "Validate Voucher Sucess", "data": output})
+	c.JSON(http.StatusOK, gin.H{"message": "Validate Voucher Sucess", "data": output})
 }
 func (h *HandlerApplicationVoucher) CreateUseVoucher(c *gin.Context) {
 	var use model.Use

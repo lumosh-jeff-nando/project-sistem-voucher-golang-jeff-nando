@@ -126,3 +126,12 @@ time="2024-12-02T06:23:39+07:00" level=info msg="{2024-12-02 06:23:39.0938696 +0
 =======
 time="2024-12-01T23:24:31+07:00" level=info msg="{2024-12-01 23:24:31.513996094 +0700 WIB m=+18.017848485 250ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
 >>>>>>> da024f3c1db8c232899822ffd96a268a8ff9fce6
+time="2024-12-02T16:57:23+07:00" level=info msg="{2024-12-02 16:57:23.4375576 +0700 +07 m=+4.170681301 0s 200 ::1 POST /api/v1/apply-voucher/validate PostmanRuntime/7.43.0}"
+time="2024-12-02T16:57:39+07:00" level=info msg="{2024-12-02 16:57:39.8443243 +0700 +07 m=+20.577448001 642.7µs 200 ::1 POST /api/v1/apply-voucher/validate PostmanRuntime/7.43.0}"
+time="2024-12-02T17:28:47+07:00" level=info msg="{2024-12-02 17:28:47.8355132 +0700 +07 m=+147.809570501 0s 200 ::1 POST /api/v1/apply-voucher/validate PostmanRuntime/7.43.0}"
+time="2024-12-02T17:28:51+07:00" level=info msg="{2024-12-02 17:28:51.5711875 +0700 +07 m=+151.545244801 0s 200 ::1 GET /api/v1/apply-voucher/2/diskon PostmanRuntime/7.43.0}"
+time="2024-12-02T18:07:07+07:00" level=info msg="{2024-12-02 18:07:07.5023732 +0700 +07 m=+5.971962501 0s 200 ::1 GET /api/v1/apply-voucher/2/diskon PostmanRuntime/7.43.0}"
+time="2024-12-02T18:08:26+07:00" level=info msg="{2024-12-02 18:08:26.7291476 +0700 +07 m=+4.336913501 0s 200 ::1 GET /api/v1/apply-voucher/2/diskon PostmanRuntime/7.43.0}"
+time="2024-12-02T18:08:39+07:00" level=info msg="{2024-12-02 18:08:39.5975645 +0700 +07 m=+17.205330401 0s 200 ::1 GET /api/v1/history-voucher/reedem/2 PostmanRuntime/7.43.0}"
+time="2024-12-02T18:08:44+07:00" level=info msg="{2024-12-02 18:08:44.752269 +0700 +07 m=+22.360034901 0s 200 ::1 GET /api/v1/history-voucher/use/2 PostmanRuntime/7.43.0}"
+time="2024-12-02T18:08:52+07:00" level=info msg="{2024-12-02 18:08:52.6932247 +0700 +07 m=+30.300990601 0s 200 ::1 GET /api/v1/history-voucher/all/DISKON50 PostmanRuntime/7.43.0}"

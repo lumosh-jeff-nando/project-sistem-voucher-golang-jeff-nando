@@ -31,7 +31,8 @@ func (r *repoApplicationVoucher) FindAll(userID int, voucherType string) ([]mode
 	query := r.DB.
 		// Select("*").
 		Joins("JOIN redeems ON redeems.kode_voucher = vouchers.kode_voucher").
-		Where("redeems.user_id = ? AND vouchers.tipe_voucher ilike ?", userID, voucherType)
+		Where("redeems.user_id = ? AND vouchers.tipe_voucher ilike ?", userID, voucherType).
+		Preload("Redeem")
 	err := query.Find(&vouchers).Error
 	if err != nil {
 		fmt.Printf("failed to fetch vouchers: %v RepoApplicationVoucher\n", err)
