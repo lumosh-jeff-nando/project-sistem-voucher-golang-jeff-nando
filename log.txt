@@ -62,6 +62,7 @@ time="2024-12-01T21:43:03+07:00" level=info msg="{2024-12-01 21:43:03.1110172 +0
 time="2024-12-01T21:43:32+07:00" level=info msg="{2024-12-01 21:43:32.150340425 +0700 WIB m=+32.626770764 294ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
 time="2024-12-01T21:44:09+07:00" level=info msg="{2024-12-01 21:44:09.133246958 +0700 WIB m=+69.609677302 293ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
 time="2024-12-01T21:45:37+07:00" level=info msg="{2024-12-01 21:45:37.845860968 +0700 WIB m=+158.322291303 364ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
+<<<<<<< HEAD
 time="2024-12-02T02:35:18+07:00" level=info msg="{2024-12-02 02:35:18.2005821 +0700 +07 m=+104.006593101 0s 200 ::1 GET /api/v1/apply-voucher/2/DISKON50 PostmanRuntime/7.43.0}"
 time="2024-12-02T02:36:48+07:00" level=info msg="{2024-12-02 02:36:48.7187716 +0700 +07 m=+5.389953801 0s 200 ::1 GET /api/v1/apply-voucher/2/DISKON50 PostmanRuntime/7.43.0}"
 time="2024-12-02T02:40:03+07:00" level=info msg="{2024-12-02 02:40:03.0098705 +0700 +07 m=+7.748218801 0s 200 ::1 GET /api/v1/apply-voucher/2/DISKON50 PostmanRuntime/7.43.0}"
@@ -122,3 +123,6 @@ time="2024-12-02T06:22:54+07:00" level=info msg="{2024-12-02 06:22:54.9595569 +0
 time="2024-12-02T06:23:22+07:00" level=info msg="{2024-12-02 06:23:22.699634 +0700 +07 m=+149.295348801 0s 200 ::1 POST /api/v1/apply-voucher/validate PostmanRuntime/7.43.0}"
 time="2024-12-02T06:23:34+07:00" level=info msg="{2024-12-02 06:23:34.443995 +0700 +07 m=+161.039709801 0s 200 ::1 POST /api/v1/apply-voucher/validate PostmanRuntime/7.43.0}"
 time="2024-12-02T06:23:39+07:00" level=info msg="{2024-12-02 06:23:39.0938696 +0700 +07 m=+165.689584401 0s 200 ::1 POST /api/v1/apply-voucher/validate PostmanRuntime/7.43.0}"
+=======
+time="2024-12-01T23:24:31+07:00" level=info msg="{2024-12-01 23:24:31.513996094 +0700 WIB m=+18.017848485 250ns 200 ::1 POST /api/v1/management-voucher/redeem PostmanRuntime/7.29.4}"
+>>>>>>> da024f3c1db8c232899822ffd96a268a8ff9fce6
