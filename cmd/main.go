@@ -15,5 +15,6 @@ func init() {
 }
 
 func main() {
+	// this is collaboration app
 	routes.Server().Run()
 }
